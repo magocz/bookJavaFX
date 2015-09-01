@@ -15,5 +15,8 @@
 	-fx-font-weight: bold;
 	-fx-alignment: center ;
 	-fx-background-color: skyblue;
+	/*
+	 * REV: nie ma takiego property
+	 */
 	-fx-text-background-color: red;
 }

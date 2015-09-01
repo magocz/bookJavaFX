@@ -119,6 +119,9 @@ public class BookSearchController {
 
 	@FXML
 	public void addBook() throws Exception {
+		/*
+		 * REV: lepiej zablokowac przycisk zamiast wyswietlac blad
+		 */
 		if (newAuthors.getText().equals("") || newTitle.getText().equals("")) {
 			showAlert("Wszystkie pola musza byc uzupelnione!");
 			return;
@@ -144,6 +147,9 @@ public class BookSearchController {
 	}
 
 	private void addBookVO(BookVO bookVO) {
+		/*
+		 * REV: modyfikacje modelu JavaFX i kontrolek GUI musza byc wykonywane w watku JavaFX
+		 */
 		if (titleField.getText() != null) {
 			if (bookVO.getTitle().startsWith(titleField.getText())) {
 				model.getResult().add(bookVO);
@@ -153,6 +159,9 @@ public class BookSearchController {
 	}
 
 	private void clearTextFields() {
+		/*
+		 * REV: modyfikacje modelu JavaFX i kontrolek GUI musza byc wykonywane w watku JavaFX
+		 */
 		newTitle.setText("");
 		newAuthors.setText("");
 	}

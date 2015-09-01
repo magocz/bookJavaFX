@@ -21,9 +21,15 @@ import com.capgemini.starterkit.bookclient.staticFields.StaticFields;
 
 public class DataProviderImpl {
 
+	/*
+	 * REV: pola nie powinny byc statyczne
+	 */
 	private static HttpURLConnection conn;
 	private static BufferedReader br;
 
+	/*
+	 * REV: metoda nie powinna byc statyczna
+	 */
 	public static List<BookVO> getBooksByTitle(String prefix)
 			throws JsonParseException, JsonMappingException, IOException {
 		String jsonData = getJSON_DataFromRestPoint(StaticFields.URL + prefix);
@@ -33,6 +39,9 @@ public class DataProviderImpl {
 		return null;
 	}
 
+	/*
+	 * REV: metoda nie powinna byc statyczna
+	 */
 	private static String getJSON_DataFromRestPoint(String query) throws IOException {
 		try {
 			URL url = new URL(query);
@@ -43,13 +52,22 @@ public class DataProviderImpl {
 			}
 			br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			String jsonData = br.readLine();
+			/*
+			 * REV: disconnect powinien byc robiony w bloku finally
+			 */
 			conn.disconnect();
 			return jsonData;
 		} catch (IOException e) {
+			/*
+			 * REV: lepiej rzucic jakis wyjatek
+			 */
 			return null;
 		}
 	}
 
+	/*
+	 * REV: metoda nie powinna byc statyczna
+	 */
 	public static BookVO saveBook(BookVO bookVO) throws Exception {
 
 		URL myurl = new URL(StaticFields.saveBookURL);
@@ -64,6 +82,9 @@ public class DataProviderImpl {
 		os.write(generateJSON(bookVO).toString().getBytes("UTF-8"));
 		InputStream is = new BufferedInputStream(con.getInputStream());
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
+		/*
+		 * REV: zamykanie stream'a powinno byc robione w bloku finally
+		 */
 		os.close();
 
 		int HttpResult = con.getResponseCode();
@@ -75,6 +96,10 @@ public class DataProviderImpl {
 
 	}
 
+	/*
+	 * REV: metoda nie powinna byc statyczna
+	 * Ta metoda nie rzuca MalformedURLException
+	 */
 	public static JSONObject generateJSON(BookVO bookVO) throws MalformedURLException {
 
 		JSONObject reqparam = new JSONObject();

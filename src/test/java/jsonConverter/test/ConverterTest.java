@@ -14,5 +14,10 @@ public class ConverterTest {
 	public void shouldConvertSipleJSON() throws JsonParseException, JsonMappingException, IOException{
 		String testJSON = "[{\"id\":1,\"title\":\"Pierwsza ksiazka\",\"authors\":\"jan sasa\"},{\"id\":1,\"title\":\"Pierwsza ksiazka\",\"authors\":\"jan sasa\"}]";
 		System.out.print(Converter.convertJSON2Book(testJSON).size());
+
+		/*
+		 * REV: troche slaby ten test ;)
+		 * Nie sprawdzasz konkretnych wartosci pol, tylko liczbe obiektow.
+		 */
 	}
 }

@@ -4,6 +4,9 @@ package com.capgemini.starterkit.bookclient.data;
 public class BookVO {
 	private Long id;
 	private String title;
+	/*
+	 * REV: lepiej przechowywac autorow jako kolekcje
+	 */
 	private String authors;
 
 	public BookVO(){

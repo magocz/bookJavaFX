@@ -16,6 +16,7 @@
       <scope>compile</scope>
       <version>1.0.1</version>
     </dependency>
+    <!-- REV: Ta biblioteka nie jest uzywana w projekcie -->
     <dependency>
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>

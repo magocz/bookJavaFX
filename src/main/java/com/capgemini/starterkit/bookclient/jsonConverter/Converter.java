@@ -11,6 +11,9 @@ import org.codehaus.jackson.type.TypeReference;
 import com.capgemini.starterkit.bookclient.data.BookVO;
 
 public class Converter {
+	/*
+	 * REV: convertJSON2BookList? nazwa metody jest troche mylaca
+	 */
 	public static List<BookVO> convertJSON2Book(String jsonString) throws JsonParseException, JsonMappingException, IOException{
 		return new ObjectMapper().readValue(jsonString, new TypeReference<List<BookVO>>(){});
 	}
